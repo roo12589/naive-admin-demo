@@ -12,7 +12,12 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
     "noEmit": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    // ide支持识别路径提示
+    "baseUrl": ".",
+    "paths": {
+      "@/*":["src/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
