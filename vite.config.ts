@@ -5,16 +5,31 @@ import path from 'path'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { UserConfig } from 'vite'
+// import eslintPlugin from 'vite-plugin-eslint'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd())
     const viteEnv = wrapperEnv(env)
     const isProduction = false
-    console.log("env,mode",env,mode);
+    console.log('env,mode', env, mode)
     const { VITE_PORT, VITE_PROXY, VITE_PUBLIC_PATH } = viteEnv as any
     const config: UserConfig = {
-        plugins: [vue(), vueSetupExtend()],
+        plugins: [
+            vue(),
+            vueSetupExtend(),
+            // eslintPlugin({
+            //     include: [
+            //         'src/**/*.ts',
+            //         // 'src/**/*.d.ts',
+            //         // 'src/**/*.tsx',
+            //         'src/**/*.vue',
+            //         'src/*.ts',
+            //         'src/*.vue',
+            //     ],
+            //     cache:false
+            // }),
+        ],
         base: VITE_PUBLIC_PATH || '',
         define: {
             'process.env': {},
