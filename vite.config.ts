@@ -6,6 +6,8 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { visualizer } from 'rollup-plugin-visualizer'
 import { UserConfig } from 'vite'
 // import eslintPlugin from 'vite-plugin-eslint'
+import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -18,6 +20,13 @@ export default defineConfig(({ command, mode }) => {
         plugins: [
             vue(),
             vueSetupExtend(),
+            /**
+             * * 组件库按需引入插件
+             * usage: 直接使用组件,无需在任何地方导入组件
+             */
+            Components({
+                resolvers: [NaiveUiResolver()],
+            }),
             // eslintPlugin({
             //     include: [
             //         'src/**/*.ts',

@@ -1,16 +1,29 @@
 <template>
-    <div>
-        <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
-    </div>
+    <AppProvider :theme="theme">
+        <div>
+            <a href="https://vitejs.dev" target="_blank">
+                <img src="/vite.svg" class="logo" alt="Vite logo" />
+            </a>
+            <n-button type="primary" size="medium" @click="toggleTheme">toggle</n-button>
+            <n-calendar></n-calendar>
+        </div>
+    </AppProvider>
 </template>
 
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'
+import AppProvider from '@/components/AppProvider/index.vue'
+import useTheme from './hooks/useTheme'
+import { onMounted } from 'vue'
+
+const { theme, toggleTheme } = useTheme()
+// window.$message('adsadsa')
+onMounted(() => {
+    window.$loadingBar.start()
+    setTimeout(() => {
+        window.$loadingBar.finish()
+        window.$message.success('加载完成，Perfect~')
+    }, 500)
+})
 </script>
 
 <style lang="scss">
