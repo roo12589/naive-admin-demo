@@ -5,8 +5,8 @@
                 <img src="/vite.svg" class="logo" alt="Vite logo" />
             </a>
             <n-button type="primary" size="medium" @click="toggleTheme">toggle</n-button>
-            <n-calendar></n-calendar>
         </div>
+        <router-view></router-view>
     </AppProvider>
 </template>
 

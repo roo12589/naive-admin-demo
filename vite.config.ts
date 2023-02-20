@@ -9,10 +9,12 @@ import { UserConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
+import { configMockPlugin } from './src/mock/plugin'
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd())
-    const viteEnv = wrapperEnv(env)
+    const viteEnv: any = wrapperEnv(env)
     const isProduction = false
     console.log('env,mode', env, mode)
     const { VITE_PORT, VITE_PROXY, VITE_PUBLIC_PATH } = viteEnv as any
@@ -78,5 +80,9 @@ export default defineConfig(({ command, mode }) => {
             })
         )
     }
+    if (viteEnv?.VITE_APP_USE_MOCK) {
+        config.plugins.push(configMockPlugin(isProduction))
+    }
+
     return config
 })
