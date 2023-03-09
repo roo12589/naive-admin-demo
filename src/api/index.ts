@@ -1,8 +1,9 @@
 import { Api } from '@/types'
 import axios from 'axios'
-
-const [requestResolve, requestReject] = require('./interceptor/request').default
-const [responseResolve, responseReject] = require('./interceptor/response').default
+import req from './interceptor/request'
+import res from './interceptor/response'
+const [requestResolve, requestReject] = req
+const [responseResolve, responseReject] = res
 
 const request = axios.create({
     baseURL: import.meta.env.VITE_BASE_API,

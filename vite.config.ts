@@ -63,7 +63,7 @@ export default defineConfig(({ command, mode }) => {
             port: 3000,
             proxy: {
                 '^/api/': {
-                    target: 'http://baidu.com/flight-block-api/', // 后台服务器地址
+                    target: 'http://localhost:8080', // 后台服务器地址
                     changeOrigin: true /* 允许跨域 */,
                     rewrite: (path) => path.replace(/^\/api/, ''),
                 },
@@ -80,9 +80,12 @@ export default defineConfig(({ command, mode }) => {
             })
         )
     }
-    if (viteEnv?.VITE_APP_USE_MOCK) {
-        config.plugins.push(configMockPlugin(isProduction))
-    }
+    // console.log(viteEnv);
+    // if (viteEnv?.VITE_APP_USE_MOCK) {
+    //     config.plugins.push(configMockPlugin(isProduction))
+    //     console.log("mock loaded");
+        
+    // }
 
     return config
 })

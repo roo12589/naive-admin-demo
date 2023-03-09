@@ -1,6 +1,6 @@
-import type { AxiosRequestConfig } from 'axios'
+import type { InternalAxiosRequestConfig } from 'axios'
 export default [
-    (config: AxiosRequestConfig) => {
+    (config: InternalAxiosRequestConfig) => {
         // config.headers['X-Requested-With'] = 'XMLHttpRequest' // setup xhr flag
         // config.withCredentials = true
         // fingerprint(config)

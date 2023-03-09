@@ -1,10 +1,9 @@
-import { RouteRecord, RouteRecordRaw } from 'vue-router'
 import { dashboardRoutes } from './dashboard'
 
- const baseRoutes = [
+export const baseRoutes = [
     {
-        path:"/",
-        redirect:"/error/404",
+        path: '/',
+        redirect: '/login',
     },
     {
         name: 'error',
@@ -15,11 +14,11 @@ import { dashboardRoutes } from './dashboard'
         },
         component: () => import('@/views/error/404.vue'),
     },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/login/index.vue'),
+    },
 ]
 
-export const routes = [
-    ...baseRoutes,
-    ...dashboardRoutes
-]
-
-export default routes
+export const asyncRoutes = [...baseRoutes, ...dashboardRoutes]

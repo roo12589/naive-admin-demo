@@ -27,11 +27,12 @@ export default [
     url: '/api/user',
     method: 'get',
     response: ({ headers }) => {
-      const token = resolveToken(headers?.authorization)
+      // const token = resolveToken(headers?.authorization)
       return {
         code: 0,
+        msg:"login",
         data: {
-          ...(users[token] || users.guest),
+          // ...(users[token] || users.guest),
         },
       }
     },

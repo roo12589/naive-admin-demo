@@ -12,7 +12,7 @@ class Storage {
         return `${this.prefixKey}${key}`.toUpperCase()
     }
 
-    set(key, value, expire) {
+    set(key, value, expire?) {
         const stringData = JSON.stringify({
             value,
             time: Date.now(),
