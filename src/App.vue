@@ -1,10 +1,10 @@
 <template>
     <AppProvider :theme="theme">
         <div>
-            <a href="https://vitejs.dev" target="_blank">
+            <!-- <a href="https://vitejs.dev" target="_blank">
                 <img src="/vite.svg" class="logo" alt="Vite logo" />
             </a>
-            <n-button type="primary" size="medium" @click="toggleTheme">toggle</n-button>
+            <n-button type="primary" size="medium" @click="toggleTheme">toggle</n-button> -->
         </div>
         <router-view></router-view>
     </AppProvider>

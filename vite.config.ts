@@ -63,7 +63,7 @@ export default defineConfig(({ command, mode }) => {
             port: 3000,
             proxy: {
                 '^/api/': {
-                    target: 'http://localhost:8080', // 后台服务器地址
+                    target: 'https://ewxim.airchina.com.cn:10443/', // 后台服务器地址
                     changeOrigin: true /* 允许跨域 */,
                     rewrite: (path) => path.replace(/^\/api/, ''),
                 },

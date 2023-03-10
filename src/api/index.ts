@@ -8,9 +8,9 @@ const [responseResolve, responseReject] = res
 const request = axios.create({
     baseURL: import.meta.env.VITE_BASE_API,
     timeout: 10 * 1000,
-    headers: {
-        token: localStorage.getItem('token') || '',
-    },
+    // headers: {
+    //     token: localStorage.getItem('token') || '',
+    // },
 })
 
 request.interceptors.request.use(requestResolve, requestReject)

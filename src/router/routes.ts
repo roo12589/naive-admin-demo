@@ -19,6 +19,11 @@ export const baseRoutes = [
         name: 'login',
         component: () => import('@/views/login/index.vue'),
     },
+    {
+        path: '/test',
+        name: 'test',
+        component: () => import('@/views/test/index.vue'),
+    },
 ]
 
 export const asyncRoutes = [...baseRoutes, ...dashboardRoutes]
