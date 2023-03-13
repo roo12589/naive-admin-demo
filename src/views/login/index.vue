@@ -49,8 +49,8 @@ const title = import.meta.env.VITE_APP_TITLE
 const router = useRouter()
 
 const loginInfo = ref({
-  name: '',
-  password: '',
+  name: 'admin',
+  password: 'a',
 })
 
 initLoginInfo()
@@ -73,6 +73,8 @@ async function handleLogin() {
   try {
     const res:any = await login({ name, password: password.toString() })
     if (res.code === 0) {
+      console.log(res);
+      
       window.$message.success('登录成功')
       setToken(res.data.token)
       if (isRemember.value) {

@@ -8,7 +8,7 @@ export default [
     (response: AxiosResponse) => {
 
         if (response.data.code === 0) {
-            return response.data.data
+            return response.data
             // 10002002 token失效
         } else if (response.data.code === 10002002) {
             // store.commit("user/cleanToken")

@@ -25,14 +25,29 @@ const users = {
 export default [
   {
     url: '/api/user',
-    method: 'get',
+    method: 'post',
     response: ({ headers }) => {
       // const token = resolveToken(headers?.authorization)
       return {
         code: 0,
         msg:"login",
         data: {
-          // ...(users[token] || users.guest),
+          userList:users
+        },
+      }
+    },
+  },
+  {
+    url: '/api/getRoleById',
+    method: 'get',
+    response: ({ query }) => {
+      console.log('id>>>>>>>>', query.id)
+      return {
+        code: 0,
+        message: 'ok',
+        data: {
+          roleName: 'admin',
+          roleValue: 'admin',
         },
       }
     },

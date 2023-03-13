@@ -9,7 +9,8 @@ import { UserConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
-import { configMockPlugin } from './src/mock/plugin'
+import { configMockPlugin } from './mock/plugin'
+import { viteMockServe } from 'vite-plugin-mock'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -80,12 +81,12 @@ export default defineConfig(({ command, mode }) => {
             })
         )
     }
-    // console.log(viteEnv);
-    // if (viteEnv?.VITE_APP_USE_MOCK) {
-    //     config.plugins.push(configMockPlugin(isProduction))
-    //     console.log("mock loaded");
+    console.log(viteEnv);
+    if (viteEnv?.VITE_APP_USE_MOCK) {
+        config.plugins.push(configMockPlugin(isProduction))
+        console.log("mock loaded");
         
-    // }
+    }
 
     return config
 })

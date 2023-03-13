@@ -1,3 +1,4 @@
+import axios from 'axios'
 import request from './index'
 
 export function getUsers(data = {}) {
@@ -21,16 +22,10 @@ export function getUser(id?) {
     })
 }
 export function login(data) {
-    if (data) {
-        return request({
-            url: `/user`,
-            method: 'post',
-            data,
-        })
-    }
     return request({
         url: '/user',
-        method: 'get',
+        method: 'post',
+         data,
     })
 }
 
