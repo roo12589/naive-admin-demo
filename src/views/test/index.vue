@@ -29,6 +29,13 @@ interface UserResult {
     positions?: any
     catch?: any
 }
+async function test1() {
+    const res1: any = await getAccessToken()
+    const { access_token } = res1
+    const res2 = (await getDepartmentMember(access_token, 721)).userlist
+    console.log('res2', res2)
+}
+test1()
 
 function getAccessToken() {
     /*
@@ -61,25 +68,7 @@ function getDepartmentList(id) {
 
 function isInTargetDepartment(departmentObj, depTree) {
     const servicePartyList = [
-        721,
-        484,
-        705,
-        1042,
-        674,
-        1138,
-        132,
-        579,
-        495,
-        1013,
-        472,
-        1396,
-        8691,
-        267,
-        3325,
-        3330,
-        5179,
-        2878,
-        2938,
+        721, 484, 705, 1042, 674, 1138, 132, 579, 495, 1013, 472, 1396, 8691, 267, 3325, 3330, 5179, 2878, 2938,
         // 355, //地面服务部（生产）
     ]
     console.log(departmentObj.name, departmentObj.id, departmentObj.parentid)
@@ -163,8 +152,8 @@ async function getData(): Promise<any> {
     console.log('resultUserList', resultUserList)
 }
 
-const mainTitle = ['员工号', '姓名', '职务', '部门树', '部门id树','命中部门']
-const mainTitleForKey = ['userid', 'name', 'positions', 'depNameTree', 'depIdTree','catch']
+const mainTitle = ['员工号', '姓名', '职务', '部门树', '部门id树', '命中部门']
+const mainTitleForKey = ['userid', 'name', 'positions', 'depNameTree', 'depIdTree', 'catch']
 function exportCSVPartyList() {
     return exportCSV(resultPartyList, mainTitle, mainTitleForKey, 'CSV-部门源')
 }
